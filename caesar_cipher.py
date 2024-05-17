@@ -1,15 +1,42 @@
 import string
 import sys
 
-letters_lowercase = list(string.ascii_lowercase)
-#letters_uppercase = list(string.ascii_uppercase)
+letters_lowercase = string.ascii_lowercase
+letters_uppercase = string.ascii_uppercase
 
 def encrypt(plaintext, shift):
-    ciphertext = ''
+    result = ''
     for letter in plaintext:
-        letter = letter.lower()
-        if not letter == ' ':
+        if letter.islower():
             index = letters_lowercase.find(letter)
+            # wrap around the range of alphabets
+            new_index = (index + shift) % 26
+            # accumulate encrypted message
+            result += letters_lowercase[new_index]
+        elif letter.isupper():
+            index = letters_uppercase.find(letter)
+            new_index = (index + shift) % 26
+            result += letters_uppercase[new_index]
+        else:
+            result += letter
+    return result
+
+def decrypt(cipherText, shift):
+    result = ''
+    for letter in cipherText:
+        if letter.islower():
+            index = letters_lowercase.find(letter)
+            # wrap around the range of alphabets
+            new_index = (index - shift) % 26
+            # accumulate decrypted message
+            result += letters_lowercase[new_index]
+        elif letter.isupper():
+            index = letters_uppercase.find(letter)
+            new_index = (index - shift) % 26
+            result += letters_uppercase[new_index]
+        else:
+            result += letter
+    return result
 
 def main():
     print("Caesar Cipher\n")
@@ -20,11 +47,11 @@ def main():
     try:
         shift_value = int(shift_value)
     except ValueError:
-        print("Shift key should be a number!")
+        print("Shift key should be an integer!")
         sys.exit()
 
     if shift_value < 1 or shift_value > 26:
-        print("Shift key out of range!")
+        print("Shift key should be between 1 and 26!")
         sys.exit()
 
     print("\nWhat operation do you want to perform?")
@@ -40,6 +67,15 @@ def main():
     if operation != 1 and operation != 2:
         print("Invalid operation option entered!")
         sys.exit()
+        
+    if operation == 1:
+        result = encrypt(input_message, shift_value)
+        operation_name = "encrypted"
+    else:
+        result = decrypt(input_message, shift_value)
+        operation_name = "decrypted"
+    
+    print(f"The {operation_name} message is: {result}")
         
 if __name__ == "__main__":
     main()
