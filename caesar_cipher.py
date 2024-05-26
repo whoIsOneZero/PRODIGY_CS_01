@@ -5,6 +5,16 @@ letters_lowercase = string.ascii_lowercase
 letters_uppercase = string.ascii_uppercase
 
 def encrypt(plaintext, shift):
+    """
+    Encrypts a plaintext message using a Caesar cipher.
+    
+    Args:
+        plaintext (str): The message to be encrypted.
+        shift (int): The shift value for the Caesar cipher (1-26).
+        
+    Returns:
+        str: The encrypted message.
+    """
     result = ''
     for letter in plaintext:
         if letter.islower():
@@ -22,6 +32,16 @@ def encrypt(plaintext, shift):
     return result
 
 def decrypt(cipherText, shift):
+    """
+    Decrypts a ciphertext message using a Caesar cipher.
+    
+    Args:
+        cipherText (str): The message to be decrypted.
+        shift (int): The shift value used for the Caesar cipher (1-26).
+        
+    Returns:
+        str: The decrypted message.
+    """
     result = ''
     for letter in cipherText:
         if letter.islower():
@@ -39,6 +59,12 @@ def decrypt(cipherText, shift):
     return result
 
 def main():
+    """
+    Main function to run the Caesar cipher program.
+    
+    Prompts the user to input a message, a shift value, and an operation (encryption or decryption).
+    Validates the inputs and performs the requested operation, then prints the result.
+    """
     print("Caesar Cipher\n")
     input_message = input("Enter input message: ")
     shift_value = input("Enter a shift value (1 to 26): ")
