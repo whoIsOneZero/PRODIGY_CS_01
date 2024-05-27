@@ -62,7 +62,7 @@ def main():
     """
     Main function to run the Caesar cipher program.
     
-    Prompts the user to input a message, a shift value, and an operation (encryption or decryption).
+    prompts the user to input a message, a shift value, and an operation (encryption or decryption).
     Validates the inputs and performs the requested operation, then prints the result.
     """
     print("Caesar Cipher\n")
