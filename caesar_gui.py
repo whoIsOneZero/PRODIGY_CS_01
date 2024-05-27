@@ -71,7 +71,7 @@ def main():
     parser = GooeyParser()
     
     parser.add_argument('input_message', help='Enter input message')
-    parser.add_argument('shift_value', type=int, help='Enter a shift value (1 to 26)', choices=range(1, 27))
+    parser.add_argument('shift_value', type=int, help='Enter a shift value (1 to 26)', choices=range(1, 26))
     parser.add_argument('operation', choices=['Encrypt', 'Decrypt'], help='Choose operation')
     
     args = parser.parse_args()
