@@ -59,7 +59,8 @@ def decrypt(cipherText, shift):
             result += letter
     return result
 
-@Gooey(program_name="Caesar Cipher")
+@Gooey(program_name="Caesar Cipher",
+       program_description="Caesar cipher encryption and decryption")
 def main():
     """
     Main function to run the Caesar cipher program with a GUI.
@@ -67,7 +68,7 @@ def main():
     Uses Gooey to create a graphical user interface for the user to input the message, 
     shift value, and operation type (Encrypt or Decrypt).
     """
-    parser = GooeyParser(description="Caesar Cipher Encryption and Decryption")
+    parser = GooeyParser()
     
     parser.add_argument('input_message', help='Enter input message')
     parser.add_argument('shift_value', type=int, help='Enter a shift value (1 to 26)', choices=range(1, 27))
